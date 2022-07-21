@@ -1,5 +1,44 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
 
-def index(request):
-    return HttpResponse("<h1>Probando sitio USUARIOS</h1>")
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import Group
+
+from .forms import *
+
+# def login_request(request):
+#     if request.method == "POST":
+#         form = AuthenticationForm(request, data = request.POST)
+#         if form.is_valid():
+#             usuario = form.cleaned_data.get('username')
+#             contra = form.cleaned_data.get('password')
+#             user = authenticate(dni = usuario, password = contra)            
+#             if user is not None:
+#                 login(request, user)
+#                 if user.tipo_usuario == 1:
+#                     return render(request, 'estudiante.html')
+#                 elif user.tipo_usuario == 2:
+#                     return render(request,'docente.html')
+#                 else:
+#                     return redirect('inicio')
+#             else:
+#                 return redirect('inicio')
+#         else:
+#             return redirect('login')
+#     form = AuthenticationForm()
+#     ctx = {"form": form}
+#     return render(request, "login.html", ctx)  
+
+def registro_e(request):
+    if request.method=="POST":
+        form = UsuarioCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            new_user.tipo_usuario = 1
+            form.save()
+            grupo = Group.objects.get(name='Estudiantes') 
+            grupo.user_set.add(new_user.id)
+            return redirect('index')    
+    else:
+        form = UsuarioCreationForm()
+    return render(request,"usuarios/registro.html", {"form": form})

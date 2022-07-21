@@ -7,7 +7,7 @@ from cursos.models import Comision
 
 class CursoInscripto(models.Model):
     curso_inscripto = models.ForeignKey(Comision, on_delete=models.CASCADE)
-    estudiante = models.ForeignKey(Usuario, on_delete=models.CASCADE)#, limit_choices_to={'groups__name': "Estudiantes"})
+    estudiante = models.ForeignKey(Usuario, on_delete=models.CASCADE, limit_choices_to={'groups__name': "Estudiantes"})
         
     def __str__(self):
         return f"{self.estudiante} - {self.curso_inscripto}"
@@ -20,3 +20,6 @@ class CursoInscripto(models.Model):
             if inscriptos >= vacantes:
                 return messages.error("Las vacantes para el curso estan completas o aún no se han habilitado!")
         super().save(*args, **kwargs)
+        
+    class Meta:
+        verbose_name_plural = 'Estudiantes inscriptos'

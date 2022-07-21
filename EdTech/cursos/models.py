@@ -13,4 +13,7 @@ class Comision(models.Model):
     vacantes = models.PositiveSmallIntegerField("Vacantes", validators=[MaxValueValidator(5)])
     
     def __str__(self):
-        return f"{self.tema_curso} - [{self.nro_comision} - Vacantes: {self.vacantes}]"
+        return f"{self.tema_curso} - [{self.nro_comision}] - Vacantes: {self.vacantes}"
+    
+    class Meta:
+        verbose_name_plural = 'Comisiones'

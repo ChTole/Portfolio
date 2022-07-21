@@ -12,12 +12,18 @@ class Posteo(models.Model):
     contenido = models.TextField("Contenido", max_length=200)
     imagen = models.ImageField(upload_to='media/foro', null=True, blank=True)
     
+    def __str__(self):
+        return f"{self.fecha} - Autor: {self.autor} - Tema: {self.tema}"
+    
 class Comentario(models.Model):
     posteo_rel = models.ForeignKey(Posteo, on_delete=models.CASCADE)
     fecha = models.DateField("Fecha", auto_now=True)
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     comentario = models.TextField("Contenido", max_length=200)
     imagen = models.ImageField(upload_to='media/foro', null=True, blank=True)
+    
+    def __str__(self):
+        return f"{self.posteo_rel.tema} - Autor: {self.autor} - Tema: {self.fecha}"
     
 class Mensaje(models.Model):
     fecha = models.DateField("Fecha", auto_now=True)

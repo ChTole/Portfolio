@@ -1,5 +1,8 @@
-# from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render
+
+from cursos.models import Tema
 
 def index(request):
-    return HttpResponse("<h1>Probando sitio principal</h1>")
+    cursos = Tema.objects.all()
+    ctx = {"cursos": cursos}
+    return render(request, "sitio1/index.html", ctx)
