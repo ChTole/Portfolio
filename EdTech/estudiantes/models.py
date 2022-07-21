@@ -1,3 +1,4 @@
+from email.mime import message
 from django.db import models
 from django.contrib import messages
 
@@ -13,12 +14,15 @@ class CursoInscripto(models.Model):
         return f"{self.estudiante} - {self.curso_inscripto}"
         
     def save(self, *args, **kwargs):
-        inscriptos = CursoInscripto.objects.filter(curso_inscripto=self.curso_inscripto).count()
-        vacantes = Comision.objects.get(curso=self.curso_inscripto).vacantes
-        print(inscriptos, vacantes)
+        inscriptos = CursoInscripto.objects.filter(curso_inscripto=self.curso_inscripto)
+        if inscriptos.filter(estudiante=self.estudiante):
+            # ver messages
+            return print("no se grabó!!!")
+        vacantes = self.curso_inscripto.vacantes
         if inscriptos and vacantes:
-            if inscriptos >= vacantes:
-                return messages.error("Las vacantes para el curso estan completas o aún no se han habilitado!")
+            if inscriptos.count() >= vacantes:
+                # ver messages
+                return print("no se grabó!!!")
         super().save(*args, **kwargs)
         
     class Meta:
