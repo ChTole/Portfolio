@@ -1,0 +1,17 @@
+{% extends 'inicio.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+    
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Iniciar sesión</button>
+    </form>
+    <br>
+    <a href="{% url 'registro-e' %}">Registrar usuario estudiante</a>
+    <br>
+    <a href="{% url 'registro-d' %}">Registrar usuario docente</a>
+{% endblock %}
