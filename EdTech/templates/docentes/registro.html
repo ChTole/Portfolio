@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block title %}
+EdTech - Crear cuenta
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-5">Registro de usuario</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Guardar</button>
+</form>
+{% endblock %}
