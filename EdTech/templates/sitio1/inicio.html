@@ -20,7 +20,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="">EdTech - Educación online</a>
+                <a class="navbar-brand" href="{% url 'inicio' %}">EdTech - Educación online</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -37,18 +37,11 @@
                     <li class="nav item"> Hola, {{ user.first_name }}</li>
                     <li class="nav item"><a class="btn btn-primary" href="{% url 'Logout' %}">Cerrar sesión</a></li>
                     <li class="nav item"><a class="btn btn-primary" href="{% url 'perfil' %}">Editar perfil</a></li>
+                    <li class="nav item"><a class="btn btn-primary" href="{% url 'foro-list' %}">Foro/Mensajes</a></li>
                         {% else %}
                     <!-- <img height="40px" src='../media/avatares/avatar_null.png' alt=""> -->
-                    
-                        <a class="btn btn-primary offset-sm-1"href="{% url 'foro-list' %}">
-                            Foro/Mensajes
-                        </a>
-                        <a class="btn btn-primary offset-sm-1"href="#">
-                            Ingreso estudiantes
-                        </a>
-                        <a class="btn btn-primary offset-sm-1"href="{% url 'login' %}">
-                            Sitio docentes
-                        </a>
+                        <li class="nav item"><a class="btn btn-primary"href="#">Ingreso estudiantes</a></li>
+                        <li class="nav item"><a class="btn btn-primary"href="{% url 'login' %}">Sitio docentes</a></li>
                     
                     {% endif %}
                 </div>
@@ -72,7 +65,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top img-thumbnail" src="{{ curso.imagen.url }}" alt="..." />
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="fw-bolder">{{ curso.tema }}</h5>

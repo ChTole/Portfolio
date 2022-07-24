@@ -13,10 +13,11 @@ EdTech - Posteo y comentarios
 
 <p> Creando por: {{ posteo.autor }}  el {{ posteo.fecha }} </p>
 
-<img src="{{ posteo.imagen.url }}" alt="" srcset="">
-
 <p> {{ posteo.contenido }} </p>
 
+<div class="card h-25">
+    <img class="card-img-top img-thumbnail" style="max-width: 30%;" src="{{ posteo.imagen.url }}" alt="">
+</div>
 <h5>Comentarios</h5>
 
 {% for comment in posteo.comentarios.all %}

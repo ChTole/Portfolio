@@ -2,7 +2,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 class Tema(models.Model):
-    tema = models.CharField("Título curso", max_length=50, unique=True)        
+    tema = models.CharField("Título curso", max_length=50, unique=True)
+    imagen = models.ImageField("Logo", upload_to='cursos_logos', null=True, blank=True)        
     
     def __str__(self):
         return f"{self.tema}"
