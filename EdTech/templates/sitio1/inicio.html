@@ -40,7 +40,7 @@
                     <li class="nav item"><a class="btn btn-primary" href="{% url 'foro-list' %}">Foro/Mensajes</a></li>
                         {% else %}
                     <!-- <img height="40px" src='../media/avatares/avatar_null.png' alt=""> -->
-                        <li class="nav item"><a class="btn btn-primary"href="#">Ingreso estudiantes</a></li>
+                        <li class="nav item"><a class="btn btn-primary"href="{% url 'estudiantes' %}">Ingreso estudiantes</a></li>
                         <li class="nav item"><a class="btn btn-primary"href="{% url 'login' %}">Sitio docentes</a></li>
                     
                     {% endif %}
@@ -85,7 +85,5 @@
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; ChristianSoft 2022</p></div>
         </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

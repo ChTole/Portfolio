@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
@@ -18,8 +19,7 @@ def login_request(request):
                 if user.tipo_usuario != 2:
                     return redirect('inicio')
                 else:
-                    # return redirect('../../docentes/docente')
-                    return redirect('../../docentes/docente/' + str(user.id))
+                    return redirect('../../docentes/docente')
             else:
                 return redirect('sitio1/inicio')
         else:
@@ -43,4 +43,4 @@ def registro_e(request):
     return render(request,"usuarios/registro.html", {"form": form})
 
 def editar_perfil(request):
-    pass
+    return HttpResponse("Sitio en construcción!")

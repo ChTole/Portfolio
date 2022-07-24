@@ -1,13 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from .models import CursoPostulado
 from cursos.models import Comision
 
 @login_required
-def docentes(request, user_id):
-    postulaciones = CursoPostulado.objects.filter(docente=user_id)
+def docentes(request):
+    postulaciones = CursoPostulado.objects.filter(docente=request.user)
     ctx = {"postulaciones": postulaciones}
     return render(request, "docentes/docentes_inicio.html", ctx)
 

@@ -27,5 +27,9 @@ class Mensaje(models.Model):
     fecha = models.DateField("Fecha", auto_now=True)
     autor = models.ForeignKey(Usuario, related_name='autor', on_delete=models.CASCADE)
     destinatario = models.ForeignKey(Usuario, related_name='destinatario', on_delete=models.CASCADE)
-    comentario = models.TextField("Contenido", max_length=200)
-    imagen = models.ImageField(upload_to='foro', null=True, blank=True)
+    asunto = models.CharField("Asunto", max_length=30, null=True, blank=True)
+    contenido = models.TextField("Contenido", max_length=200)
+    imagen = models.ImageField(upload_to='mensajes', null=True, blank=True)
+    
+    def __str__(self):
+        return f"{self.asunto} - De: {self.autor}, a: {self.destinatario} el: {self.fecha}"
