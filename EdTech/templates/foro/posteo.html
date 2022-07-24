@@ -1,0 +1,35 @@
+{% extends "sitio1/inicio.html" %}
+
+{% load static %}
+
+{% block title %}
+EdTech - Posteo y comentarios
+{% endblock %}
+
+{% block content %}
+
+<h3> {{ posteo.titulo }} </h3>
+<h4> Tema: {{ posteo.tema }} </h4>
+
+<p> Creando por: {{ posteo.autor }}  el {{ posteo.fecha }} </p>
+
+<img src="{{ posteo.imagen.url }}" alt="" srcset="">
+
+<p> {{ posteo.contenido }} </p>
+
+<h5>Comentarios</h5>
+
+{% for comment in posteo.comentarios.all %}
+    <div class="comment">
+        <div class="date">{{ comment.fecha }}</div>
+        <strong>{{ comment.autor }}</strong>
+        <p>{{ comment.comentario }}</p>
+    </div>
+{% empty %}
+    <p>Todavía no hay comentarios :(</p>
+{% endfor %}
+
+<br>
+<a href="{% url 'foro-list' %}">Volver a foro</a>
+
+{% endblock %}

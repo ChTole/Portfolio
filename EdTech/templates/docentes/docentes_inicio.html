@@ -1,0 +1,38 @@
+{% extends 'sitio1/inicio.html' %}
+
+{% block title %}
+    EdTech - Docentes
+{% endblock %}
+    
+{% block content %}
+<!-- Header -->
+<header class="bg-dark py-3">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <a class="btn btn-primary"href="#">Ver cursos disponibles</a>
+            <a class="btn btn-primary"href="#">Editar perfil</a>
+        </div>
+    </div>
+</header>
+<!-- Section -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Curso</th>
+            <th scope="col">Comisión</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Finalización</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in postulaciones %}
+        <tr>
+            <td>{{ curso.curso_postulado.tema_curso }}</td>
+            <td>{{ curso.curso_postulado.nro_comision }}</td>
+            <td>{{ curso.curso_postulado.inicio }}</td>
+            <td>{{ curso.curso_postulado.final }}</td>
+        </tr>   
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

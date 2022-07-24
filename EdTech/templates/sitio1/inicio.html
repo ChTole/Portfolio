@@ -32,19 +32,31 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <a class="btn btn-primary"href="">
-                            Ingreso estudiante
+                    {% if user.is_authenticated %}
+                    <!-- <img height="40px" src='{{ user.avatar.imagen.url }}' alt=""> -->
+                    <li class="nav item"> Hola, {{ user.first_name }}</li>
+                    <li class="nav item"><a class="btn btn-primary" href="{% url 'Logout' %}">Cerrar sesión</a></li>
+                    <li class="nav item"><a class="btn btn-primary" href="{% url 'perfil' %}">Editar perfil</a></li>
+                        {% else %}
+                    <!-- <img height="40px" src='../media/avatares/avatar_null.png' alt=""> -->
+                    
+                        <a class="btn btn-primary offset-sm-1"href="{% url 'foro-list' %}">
+                            Foro/Mensajes
                         </a>
-                        <a class="btn btn-primary"href="">
+                        <a class="btn btn-primary offset-sm-1"href="#">
+                            Ingreso estudiantes
+                        </a>
+                        <a class="btn btn-primary offset-sm-1"href="{% url 'login' %}">
                             Sitio docentes
                         </a>
-                    </form>
+                    
+                    {% endif %}
                 </div>
             </div>
         </nav>
         <!-- Header-->
-        <header class="bg-dark py-5">
+        {% block content %}
+        <header class="bg-dark py-4">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Cursos disponibles</h1>
@@ -56,7 +68,6 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    {% block content %}
                     {% for curso in cursos %}
                     <div class="col mb-5">
                         <div class="card h-100">
@@ -65,9 +76,6 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="fw-bolder">{{ curso.tema }}</h5>
-                                    <p>Inicia: {{ curso.inicio }}</p>
-                                    <p>Finaliza: {{ curso.fin }}</p>
-                                    <p>Profesor: {{ curso.docente }}</p>
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -76,10 +84,10 @@
                         </div>
                     </div>
                     {% endfor %}
-                    {% endblock %}
                 </div>
             </div>
         </section>
+        {% endblock %}
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; ChristianSoft 2022</p></div>

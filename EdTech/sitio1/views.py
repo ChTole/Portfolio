@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from cursos.models import Tema
 
-def index(request):
+def inicio(request):
     cursos = Tema.objects.all()
     ctx = {"cursos": cursos}
-    return render(request, "sitio1/index.html", ctx)
+    return render(request, "sitio1/inicio.html", ctx)
