@@ -21,9 +21,24 @@ class ForoDetail(LoginRequiredMixin, DetailView):
     model = Posteo
     template_name = "foro/posteo.html"
     
-@login_required
-def mensajes(request):
-    recibidos = Mensaje.objects.filter(destinatario = request.user)
-    enviados = Mensaje.objects.filter(autor = request.user)
-    ctx = {"enviados": enviados, "recibidos": recibidos}
-    return render(request, "comunicacion/mensajes.html", ctx)
+class MensajesRecibidosList(LoginRequiredMixin, ListView):
+    model = Mensaje
+    template_name = 'comunicacion/mensajes_recibidos.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return self.model.objects.filter(destinatario = self.request.user)
+
+class MensajesEnviadosList(LoginRequiredMixin, ListView):
+    model = Mensaje
+    template_name = 'comunicacion/mensajes_enviados.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return self.model.objects.filter(autor = self.request.user)
+    
+class MensajeDetail(LoginRequiredMixin, DetailView):
+    model = Mensaje
+    template_name = 'comunicacion/mensaje_detail.html'
+    fields = '__all__'
+    

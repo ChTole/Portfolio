@@ -8,12 +8,13 @@ EdTech - Mensajería
 
 {% block content %}
     <h4>Recibidos</h4>
-    {% for mensaje in recibidos %}
+    <p><a class="btn btn-primary" href="{% url 'mensajes-enviados' %}">Ir a Enviados</a></p>
+    {% for mensaje in object_list %}
     <div class="row">
     <div class="col-md-5">
         <h5>Asunto: {{ mensaje.asunto }}</h5>
         <p>De: {{ mensaje.autor }} el {{ mensaje.fecha }}  
-            <a class="btn btn-primary" href="#">Ver completo</a></p>
+            <a class="btn btn-primary" href="{% url 'mensaje' mensaje.id %}">Ver</a></p>
     </div>
     </div>
     <hr>
@@ -21,20 +22,6 @@ EdTech - Mensajería
     <p>Aún no tiene mensajes!</p>
     {% endfor %}
     
-    <h4>Enviados</h4>
-    {% for mensaje in enviados %}
-    <div class="row">
-    <div class="col-md-5">
-        <h5>Asunto: {{ mensaje.asunto }}</h5>
-        <p>De: {{ mensaje.autor }} el {{ mensaje.fecha }}  
-            <a class="btn btn-primary" href="#">Ver completo</a></p>   
-    </div>
-    </div>
-    <hr>
-    {% empty %}
-    <p>Aún no tiene mensajes!</p>
-    {% endfor %}
-
     <!-- Pagination -->
     {% block pagination %}
     {% if is_paginated %}

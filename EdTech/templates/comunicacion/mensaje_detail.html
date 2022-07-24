@@ -1,0 +1,19 @@
+{% extends "sitio1/inicio.html" %}
+
+{% load static %}
+
+{% block title %}
+EdTech - Mensajería
+{% endblock %}
+
+{% block content %} 
+    <h4>Asunto: {{ mensaje.asunto }} <small>Enviado el: {{ mensaje.fecha }}</small></h4>
+    <h5>De: {{ mensaje.autor }}  a: {{ mensaje.destinatario }}</h5>
+    <p> {{ mensaje.contenido }} </p>
+    <br>
+    {% if mensaje.imagen %}
+        <img class="card-img-top img-thumbnail" style="max-width: 30%;" src="{{ mensaje.imagen.url }}">
+    {% endif %}
+    <br>
+    <p><a class="btn btn-primary" href="{% url 'mensajes-recibidos' %}">Volver</a></p>
+{% endblock %}
