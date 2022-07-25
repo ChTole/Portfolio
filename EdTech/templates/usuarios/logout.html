@@ -1,2 +1,16 @@
-<h1>hasta pronto!!!</h1>
-<a href="{% url 'inicio' %}">Volver al inicio</a>
+{% extends 'sitio1/inicio.html' %}
+
+{% block title %}
+EdTech - Docentes
+{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <h6>Sesión cerrada correctamente. Hasta pronto!!!</h6>
+            <li class="nav item"><a class="btn btn-primary ms-2" href="{% url 'inicio' %}">Volver al inicio</a></li>        
+        </div>
+    </div>
+</section>
+{% endblock %}

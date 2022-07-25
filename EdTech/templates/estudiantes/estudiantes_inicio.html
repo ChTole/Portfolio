@@ -7,9 +7,9 @@
 {% block content %}
 <!-- Header -->
 <header class="bg-dark py-3">
-    <div class="container px-5 px-lg-5 my-3">
+    <div class="container px-4 px-lg-5 my-3">
         <div class="text-center text-white">
-            <h3>Listado de cursos en los que te has postulado como docente</h3>
+            <h3>Listado de cursos en los que te has inscripto</h3>
         </div>
     </div>
 </header>
@@ -24,16 +24,16 @@
         </tr>
     </thead>
     <tbody>
-        {% for curso in postulaciones %}
+        {% for curso in cursos %}
         <tr>
-            <td>{{ curso.curso_postulado.tema_curso }}</td>
-            <td>{{ curso.curso_postulado.nro_comision }}</td>
-            <td>{{ curso.curso_postulado.inicio }}</td>
-            <td>{{ curso.curso_postulado.final }}</td>
+            <td>{{ curso.curso_inscripto.tema_curso }}</td>
+            <td>{{ curso.curso_inscripto.nro_comision }}</td>
+            <td>{{ curso.curso_inscripto.inicio }}</td>
+            <td>{{ curso.curso_inscripto.final }}</td>
         </tr>   
         {% empty %}
         <div class="text-center">
-            <h3>Aún no te has postulado a cursos como docente!</h3>
+            <h3>Aún no te has inscripto a ningún curso!</h3>
         </div>
         {% endfor %}
     </tbody>

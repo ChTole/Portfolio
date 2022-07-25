@@ -13,8 +13,8 @@
                         <div class="card-body p-4 p-sm-5">
                             <h5 class="card-title text-center mb-5 fw-light fs-5">Ingreso estudiante</h5>
                             <form method="POST">
-                                {% csrf_token %}
-                                <!-- {{ form.as_p }} -->
+                              {% csrf_token %}
+                              <!-- {{ form.as_p }} -->
                               <div class="form-floating mb-3">
                                 <input class="form-control" id="floatingInput" placeholder="11222333" name="username">
                                 <label for="floatingInput">Documento de Identidad</label>
@@ -23,15 +23,11 @@
                                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                                 <label for="floatingPassword">Password</label>
                               </div>
-      
-                    <!-- <div class="form-check mb-3">
-                      <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
-                      <label class="form-check-label" for="rememberPasswordCheck">
-                        Recordar contraseña
-                      </label>
-                    </div> -->
                               <div class="d-grid">
                                 <button class="btn btn-primary btn-login text-uppercase fw-bold">Ingresar</button>
+                                <br>
+                                <h6 class="card-title text-center mb-4 fw-light fs-5">Si aún no posees cuenta</h6>
+                                <a class="btn btn-primary ms-1 text-uppercase fw-bold" href="#">Registrarse</a>
                               </div>
                             </form>
                 </div>
@@ -39,5 +35,5 @@
             </div>
           </div>
         </div>
-      </body>
+     </body>
 {% endblock %}

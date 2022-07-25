@@ -19,7 +19,7 @@
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
+            <div class="container px-1 px-lg-1">
                 <a class="navbar-brand" href="{% url 'inicio' %}">EdTech - Educación online</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -40,12 +40,13 @@
                             <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'estudiantes_inicio' %}">Cursos inscriptos</a></li>
                         {% elif user.tipo_usuario == 2 %}
                             <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'docentes_inicio' %}">Cursos postulados</a></li>
+                            <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'cursos-disponibles' %}">Cursos disponibles</a></li>
                         {% endif %}
                     <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'foro-list' %}">Foro/Mensajes</a></li>
                     <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'perfil' %}">Editar perfil</a></li>
                     <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'Logout' %}">Cerrar sesión</a></li>
                         {% else %}
-                        <img height="40px" src='../media/avatares/avatar_null.png' alt="">
+                        <img height="40px" src='../../media/avatares/avatar_null.png' alt="">
                         <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'login-e' %}">Ingreso estudiantes</a></li>
                         <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'login-d' %}">Sitio docentes</a></li>
                     {% endif %}
