@@ -58,7 +58,7 @@ def registro_e(request):
             form.save()
             grupo = Group.objects.get(name='Estudiantes') 
             grupo.user_set.add(new_user.id)
-            return redirect('index')    
+            return redirect('login-e')    
     else:
         form = UsuarioCreationForm()
     return render(request,"usuarios/registro.html", {"form": form})

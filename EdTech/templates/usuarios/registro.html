@@ -1,14 +1,20 @@
-{% extends "sitio1/index.html" %}
+{% extends "sitio1/inicio.html" %}
 
 {% block title %}
-Registro
+EdTech - Registrarse
 {% endblock %}
 
 {% block content %}
-    <h1>Registrar nuevo {{ tipo }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Guardar</button>
-    </form>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-1">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-1 justify-content-center">
+            <h3>Registrar como estudiante</h3>
+            <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Guardar</button>
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock %}
