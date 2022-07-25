@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-def index(request):
-    return HttpResponse("<h1>Probando sitio CURSOS</h1>")
+from .models import *
+
+def detalle_curso(request, tema_id):
+    tema = Tema.objects.get(id = tema_id)
+    comisiones = Comision.objects.filter(tema_curso = tema)
+    ctx = {"tema": tema, "comisiones": comisiones}
+    return render(request, "cursos/detalle_curso.html", ctx)

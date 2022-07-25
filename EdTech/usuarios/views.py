@@ -7,7 +7,28 @@ from django.contrib.auth.models import Group
 
 from .forms import *
 
-def login_request(request):
+def login_request_e(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data = request.POST)
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contra = form.cleaned_data.get('password')
+            user = authenticate(dni = usuario, password = contra)            
+            if user is not None:
+                login(request, user)
+                if user.tipo_usuario != 1:
+                    return redirect('inicio')
+                else:
+                    return redirect('../../estudiantes/estudiante')
+            else:
+                return redirect('sitio1/inicio')
+        else:
+            return redirect('login-e')
+    form = AuthenticationForm()
+    ctx = {"form": form}
+    return render(request, "usuarios/login_e.html", ctx)  
+
+def login_request_d(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data = request.POST)
         if form.is_valid():
@@ -23,10 +44,10 @@ def login_request(request):
             else:
                 return redirect('sitio1/inicio')
         else:
-            return redirect('login')
+            return redirect('login-d')
     form = AuthenticationForm()
     ctx = {"form": form}
-    return render(request, "usuarios/login.html", ctx)  
+    return render(request, "usuarios/login_d.html", ctx)  
 
 def registro_e(request):
     if request.method=="POST":
