@@ -46,7 +46,7 @@ class MensajeDetail(LoginRequiredMixin, DetailView):
 @login_required
 def nuevo_mensaje(request):
     if request.method == "POST":
-        form =  MensajeForm(request.POST)
+        form =  MensajeForm(request.POST, request.FILES)
         if form.is_valid():
             nuevo_mensaje = form.save(commit = False)
             nuevo_mensaje.autor = request.user
@@ -54,20 +54,32 @@ def nuevo_mensaje(request):
             return redirect('mensajes-enviados')
     else:
         form = MensajeForm()
-    ctx = {"form": form}
+    ctx = {
+        "titulo": "Nuevo mensaje",
+        "form": form,
+    }
     return render(request, "comunicacion/nuevo_mensaje.html", ctx)
 
 @login_required
 def reenviar_responder(request, mensaje_id):
     mensaje = Mensaje.objects.get(id = mensaje_id)
+    initial_data = {
+        "autor": request.user,
+        "asunto": f"Re/Rv: {mensaje.asunto}",
+        "contenido": f"El {mensaje.fecha}, {mensaje.autor} escribió: {mensaje.contenido}",
+        "imagen": mensaje.imagen,
+    }
     if request.method == "POST":
-        form =  MensajeForm(request.POST, instance = mensaje)
+        form =  MensajeForm(request.POST, request.FILES, initial = initial_data)
         if form.is_valid():
             nuevo_mensaje = form.save(commit = False)
             nuevo_mensaje.autor = request.user
             nuevo_mensaje.save()
             return redirect('mensajes-enviados')
     else:
-        form = MensajeForm(instance = mensaje)
-    ctx = {"form": form}
+        form = MensajeForm(initial = initial_data)
+    ctx = {
+        "titulo": "Reenviar/Responder",
+        "form": form,
+    }
     return render(request, "comunicacion/nuevo_mensaje.html", ctx)
