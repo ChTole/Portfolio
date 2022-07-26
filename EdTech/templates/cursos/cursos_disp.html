@@ -5,7 +5,14 @@
 {% endblock %}
     
 {% block content %}
-
+<!-- Header -->
+<header class="bg-dark py-3">
+    <div class="container px-5 px-lg-5 my-3">
+        <div class="text-center text-white">
+            <h3>Listado de cursos disponibles</h3>
+        </div>
+    </div>
+</header>
 <table class="table">
     <thead>
         <tr>
@@ -14,6 +21,7 @@
             <th scope="col">Inicio</th>
             <th scope="col">Finalización</th>
             <th scope="col">Vacantes</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +32,7 @@
             <td>{{ curso.inicio }}</td>
             <td>{{ curso.final }}</td>
             <td>{{ curso.vacantes }}</td>
+            <td><a href="#">+ Postular</a></td>
         </tr>   
         {% endfor %}
     </tbody>

@@ -7,7 +7,7 @@ EdTech - Foro y mensajería
 {% endblock %}
 
 {% block content %}
-<a class="btn btn-primary offset-sm-1"href="#">
+<a class="btn btn-primary offset-sm-1"href="{% url 'crear-post' %}">
     Crear post
 </a>
 
@@ -27,19 +27,19 @@ EdTech - Foro y mensajería
     {% for posteo in object_list %}
     <div class="row">
       <div class="col-md-2">
-        <a href="#">
+        {% if posteo.imagen %}
           <img class="img-fluid rounded mb-3 mb-md-2" src="{{ posteo.imagen.url }}" alt="">
-        </a>
+        {% endif %}
       </div>
       <div class="col-md-5">
         <h3>{{ posteo.titulo }}</h3>
         <p>Creado por: {{ posteo.autor }} el {{ posteo.fecha }}</p>
-        <a class="btn btn-primary" href="{% url 'Detail' posteo.id %}">Ver completo</a>
+        <a class="btn btn-primary" href="{% url 'posteo-detalle' posteo.id %}">Ver completo</a>
       </div>
     </div>
     <hr>
     {% empty %}
-    <p>Aún no se compartieron posteo!</p>
+    <p>Aún no se compartieron posteos!</p>
     {% endfor %}
     <!-- /.row -->
 

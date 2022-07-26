@@ -1,0 +1,24 @@
+{% extends "sitio1/inicio.html" %}
+
+{% load static %}
+
+{% block title %}
+EdTech - Nuevo posteo
+{% endblock %}
+
+{% block content %}
+
+<section class="py-1">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="mb-3">
+            <h4>Nuevo posteo</h4>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button>Enviar</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

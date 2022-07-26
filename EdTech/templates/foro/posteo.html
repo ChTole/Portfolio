@@ -7,30 +7,53 @@ EdTech - Posteo y comentarios
 {% endblock %}
 
 {% block content %}
+<section class="py-1">
+    <div class="container px-3 px-lg-2 mt-4">
+        <div class="mb-3">
 
-<h3> {{ posteo.titulo }} </h3>
-<h4> Tema: {{ posteo.tema }} </h4>
+            <h3> {{ posteo.titulo }} </h3>
+            <h4> Tema: {{ posteo.tema }} </h4>
 
-<p> Creando por: {{ posteo.autor }}  el {{ posteo.fecha }} </p>
+            <p> Creando por: {{ posteo.autor }}  el {{ posteo.fecha }} </p>
 
-<p> {{ posteo.contenido }} </p>
+            <p> {{ posteo.contenido }} </p>
 
-<div class="card h-25">
-    <img class="card-img-top img-thumbnail" style="max-width: 30%;" src="{{ posteo.imagen.url }}" alt="">
-</div>
-<h5>Comentarios</h5>
+            <div class="card h-25">
+                {% if posteo.imagen %}
+                    <img class="card-img-top img-thumbnail" style="max-width: 25%;" src="{{ posteo.imagen.url }}" alt="">
+                {% endif %}
+            </div>
+            <br>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <textarea class="form-control" name="comentario" ></textarea>
+                    <hr>
+                    <label for="id_imagen" name="imagen">Agregar imagen</label>
+                    <input type="file" name="imagen" accept="imagen/*" id="id_imagen">
+                </div>
+                <button>Comentar</button>
+            </form>
+            
+            <h5>Comentarios</h5>
 
-{% for comment in posteo.comentarios.all %}
-    <div class="comment">
-        <div class="date">{{ comment.fecha }}</div>
-        <strong>{{ comment.autor }}</strong>
-        <p>{{ comment.comentario }}</p>
+            {% for comment in posteo.comentarios.all %}
+                <div class="comment">                 
+                    <p><strong>{{ comment.autor }}</strong> dijo el {{ comment.fecha }}: {{ comment.comentario }}</p>
+                    {% if comment.imagen %}
+                        <img class="card-img-top img-thumbnail" style="max-width: 25%;" src="{{ comment.imagen.url }}" alt="">
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>Todavía no hay comentarios :(</p>
+            {% endfor %}
+
+            <br>
+            <p>
+                <a class="btn btn-primary offset-sm-1"href="{% url 'foro-list' %}">Volver a foro</a>
+            </p>
+        </div>
     </div>
-{% empty %}
-    <p>Todavía no hay comentarios :(</p>
-{% endfor %}
-
-<br>
-<a href="{% url 'foro-list' %}">Volver a foro</a>
+</section>
 
 {% endblock %}

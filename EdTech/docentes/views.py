@@ -10,8 +10,3 @@ def docentes(request):
     ctx = {"postulaciones": postulaciones}
     return render(request, "docentes/docentes_inicio.html", ctx)
 
-@login_required
-def cursos_disponibles(request):
-    disponibles = Comision.objects.all() 
-    ctx = {"disponibles": disponibles}
-    return render(request, "docentes/cursos_disp.html", ctx)
