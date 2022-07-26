@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 
 from .models import *
+from .forms import *
 
 class ForoList(LoginRequiredMixin, ListView):
     model = Posteo
@@ -42,3 +43,31 @@ class MensajeDetail(LoginRequiredMixin, DetailView):
     template_name = 'comunicacion/mensaje_detail.html'
     fields = '__all__'
     
+@login_required
+def nuevo_mensaje(request):
+    if request.method == "POST":
+        form =  MensajeForm(request.POST)
+        if form.is_valid():
+            nuevo_mensaje = form.save(commit = False)
+            nuevo_mensaje.autor = request.user
+            nuevo_mensaje.save()
+            return redirect('mensajes-enviados')
+    else:
+        form = MensajeForm()
+    ctx = {"form": form}
+    return render(request, "comunicacion/nuevo_mensaje.html", ctx)
+
+@login_required
+def reenviar_responder(request, mensaje_id):
+    mensaje = Mensaje.objects.get(id = mensaje_id)
+    if request.method == "POST":
+        form =  MensajeForm(request.POST, instance = mensaje)
+        if form.is_valid():
+            nuevo_mensaje = form.save(commit = False)
+            nuevo_mensaje.autor = request.user
+            nuevo_mensaje.save()
+            return redirect('mensajes-enviados')
+    else:
+        form = MensajeForm(instance = mensaje)
+    ctx = {"form": form}
+    return render(request, "comunicacion/nuevo_mensaje.html", ctx)

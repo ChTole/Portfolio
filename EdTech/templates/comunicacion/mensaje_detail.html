@@ -7,13 +7,26 @@ EdTech - Mensajería
 {% endblock %}
 
 {% block content %} 
-    <h4>Asunto: {{ mensaje.asunto }} <small>Enviado el: {{ mensaje.fecha }}</small></h4>
-    <h5>De: {{ mensaje.autor }}  a: {{ mensaje.destinatario }}</h5>
-    <p> {{ mensaje.contenido }} </p>
-    <br>
-    {% if mensaje.imagen %}
-        <img class="card-img-top img-thumbnail" style="max-width: 30%;" src="{{ mensaje.imagen.url }}">
-    {% endif %}
-    <br>
-    <p><a class="btn btn-primary" href="{% url 'mensajes-recibidos' %}">Volver</a></p>
+<section class="py-1">
+    <div class="container px-3 px-lg-2 mt-4">
+        <div class="mb-3">
+        <h4>Asunto: {{ mensaje.asunto }} <small>Enviado el: {{ mensaje.fecha }}</small></h4>
+        <h5>De: {{ mensaje.autor }}  a: {{ mensaje.destinatario }}</h5>
+        <p> {{ mensaje.contenido }} </p>
+        <br>
+        {% if mensaje.imagen %}
+            <img class="card-img-top img-thumbnail" style="max-width: 30%;" src="{{ mensaje.imagen.url }}">
+        {% endif %}
+        <br>
+        <p>
+            <a class="btn btn-primary" href="{% url 'mensajes-recibidos' %}">Volver</a>
+            {% if mensaje.autor == request.user %}
+                <a class="btn btn-primary" href="{% url 're-rv' mensaje.id %}">Reenviar</a>
+            {% else %}
+                <a class="btn btn-primary" href="{% url 're-rv' mensaje.id %}">Responder</a>
+            {% endif %}
+        </p>
+        </div>
+    </div>
+</section>
 {% endblock %}
