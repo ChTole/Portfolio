@@ -1,0 +1,43 @@
+{% extends 'sitio1/inicio.html' %}
+
+{% block title %}
+    EdTech - Docentes
+{% endblock %}
+    
+{% block content %}
+<!-- Header -->
+<header class="bg-dark py-3">
+    <div class="container px-5 px-lg-5 my-3">
+        <div class="text-center text-white">
+            <h3>Listado de cursos disponibles</h3>
+        </div>
+    </div>
+</header>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Curso</th>
+            <th scope="col">Comisión</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Finalización</th>
+            <th scope="col">Vacantes</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        {% if curso.nro_comision not in no_disponibles %}
+        <tr>
+            <td>{{ curso.tema_curso }}</td>
+            <td>{{ curso.nro_comision }}</td>
+            <td>{{ curso.inicio }}</td>
+            <td>{{ curso.final }}</td>
+            <td>{{ curso.vacantes }}</td>
+            <td><a href="{% url 'postular' curso.id %}">+ Postular</a></td>
+        </tr>   
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
