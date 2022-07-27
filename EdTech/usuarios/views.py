@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
@@ -64,4 +63,12 @@ def registro_e(request):
     return render(request,"usuarios/registro.html", {"form": form})
 
 def editar_perfil(request):
-    return HttpResponse("Sitio en construcción!")
+    usuario = request.user
+    if request.method=="POST":
+        form = UsuarioEditForm(request.POST, instance = usuario)
+        if form.is_valid():
+            form.save()
+            return redirect('inicio')    
+    else:
+        form = UsuarioEditForm(instance = usuario)
+    return render(request, "usuarios/editar_perfil.html", {"form": form})

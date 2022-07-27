@@ -1,0 +1,26 @@
+{% extends "sitio1/inicio.html" %}
+
+{% block title %}
+EdTech - Editar perfil
+{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-1">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-1 justify-content-center">
+            <h3>Modificar perfil</h3>
+            <p>Si desea modificar datos no consignados en éste formulario, comúniquese con Personal N2</p>
+            <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Guardar</button>
+            </form>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <li class="nav item"><a class="btn btn-primary ms-2" href="{% url 'inicio' %}">Volver sin guardar</a></li>
+        </div>
+    </nav>
+</section>
+{% endblock %}

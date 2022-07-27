@@ -28,4 +28,4 @@ Temas y/o funcionalidades de Django aplicadas:
 
 Con respecto al frontend, tomé templates y snippets de Bootstrap (sólo HTML y CSS).
 
-Despligue en chtole/pythonanywhere.com, disponible hasta el .
+Despligue en https://chtole.pythonanywhere.com/, disponible hasta el .
