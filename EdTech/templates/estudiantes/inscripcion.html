@@ -1,0 +1,32 @@
+{% extends 'sitio1/inicio.html' %}
+
+{% block title %}
+    EdTech - Estudiantes
+{% endblock %}
+    
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <h1>{{ curso.tema_curso.tema }}</h1>
+            <div class="h-25">
+                <img style="height: 100px" src="{{ curso.tema_curso.imagen.url }}" alt="">
+            </div>   
+                <ul>
+                    <li>Comisión: {{ curso.nro_comision }}</li>
+                    <li>Fecha de inicio: {{ curso.inicio }}</li>
+                    <li>Fecha de finalización: {{ curso.final }}</li>
+                </ul>       
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container px-4 px-lg-5">
+                    <form action="" method="post">
+                    {% csrf_token %}
+                    <li class="nav item"><button class="btn btn-primary ms-2" type="submit">Inscribir</button></li>
+                    </form>
+                    <li class="nav item"><a class="btn btn-primary ms-2" href="{% url 'inicio' %}">Volver</a></li>
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>
+{% endblock %}

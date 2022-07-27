@@ -26,6 +26,9 @@
                             <th scope="col">Comisión</th>
                             <th scope="col">Inicio</th>
                             <th scope="col">Finalización</th>
+                            {% if user.is_authenticated and user.tipo_usuario == 1 %}
+                            <th scope="col">Acciones</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -34,23 +37,25 @@
                             <td>{{ curso.nro_comision }}</td>
                             <td>{{ curso.inicio }}</td>
                             <td>{{ curso.final }}</td>
+                            {% if user.is_authenticated and user.tipo_usuario == 1 %}
+                            <td><a href="{% url 'inscribir-curso' curso.id %}">+ Inscribir</a></td>
+                            {% endif %}
                         </tr>   
                         {% endfor %}
                     </tbody>
                 </table>
+                {% if user.is_authenticated and user.tipo_usuario == 1 %}
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    {% if user.is_authenticated and user.tipo_usuario == 1 %}
                     <div class="container px-4 px-lg-5">
-                        <li class="nav item"><a class="btn btn-primary ms-2" href="#">Inscribir</a></li>
                         <li class="nav item"><a class="btn btn-primary ms-2" href="{% url 'inicio' %}">Volver</a></li>
                     </div>
-                    </nav>
-                    {% else %}
+                </nav>
+                {% else %}
                     <div class="">
                         <p>Para poder inscribirte deberás ingresar con tu usuario de estudiante al sitio. Si no estás registrado, <a href="{% url 'registro' %}">haz click aquí!</a></p>
                         <li class="nav item"><a class="btn btn-primary ms-2" href="{% url 'inicio' %}">Volver</a></li>
                     </div>
-                    {% endif %}
+                {% endif %}
             {% endif %}
         </div>
     </div>
