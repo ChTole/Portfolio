@@ -22,10 +22,10 @@ Temas y/o funcionalidades de Django aplicadas:
 * Múltiples aplicaciones en un mismo proyecto
 * Manejo y categorización de usuarios (AbstractUser)
 * Conexión a DB MySQL
-* CRUD
+* CRUD, sujeto a categoría de usuario
 * POO: herencia de clases (modelos) y personalización de métodos
 * Desplegado en PythonAnyWhere.
 
 Con respecto al frontend, tomé templates y snippets de Bootstrap (sólo HTML y CSS).
 
-Despligue en ChTole/pythonanywhere.com, disponible hasta el .
+Despligue en chtole/pythonanywhere.com, disponible hasta el .
