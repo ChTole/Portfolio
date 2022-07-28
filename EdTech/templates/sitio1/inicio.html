@@ -34,8 +34,8 @@
                     </ul>
                     
                     {% if user.is_authenticated %}
-                    <!-- <img height="40px" src='{{ user.avatar.imagen.url }}' alt=""> -->
                     <li class="nav item"> Hola, {{ user.first_name }}</li>
+                    <img height="40px" src="{{ request.user.avatar.url }}">
                         {% if user.tipo_usuario == 1 %}
                             <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'estudiantes_inicio' %}">Cursos inscriptos</a></li>
                         {% elif user.tipo_usuario == 2 %}

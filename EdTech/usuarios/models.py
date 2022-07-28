@@ -19,6 +19,7 @@ class Usuario(AbstractUser):
         (6, 'Backend'),
     )
     tipo_usuario = models.PositiveSmallIntegerField("Tipo",choices=TIPO, null=True)
+    avatar = models.ImageField(upload_to='avatares', null = True, blank = True)
     username = None
     
     USERNAME_FIELD = 'dni'

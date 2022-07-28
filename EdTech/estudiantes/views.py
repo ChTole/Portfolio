@@ -16,6 +16,6 @@ def inscribir_curso(request, curso_id):
     if request.method == "POST":
         estudiante_i = request.user
         CursoInscripto.objects.create(curso_inscripto = curso, estudiante = estudiante_i)
-        return redirect('inicio')
+        return redirect('estudiantes-inicio')
     ctx = {"curso": curso}
     return render(request, "estudiantes/inscripcion.html", ctx)

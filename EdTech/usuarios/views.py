@@ -65,7 +65,7 @@ def registro_e(request):
 def editar_perfil(request):
     usuario = request.user
     if request.method=="POST":
-        form = UsuarioEditForm(request.POST, instance = usuario)
+        form = UsuarioEditForm(request.POST, request.FILES, instance = usuario)
         if form.is_valid():
             form.save()
             return redirect('inicio')    

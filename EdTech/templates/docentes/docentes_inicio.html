@@ -21,6 +21,7 @@
             <th scope="col">Comisión</th>
             <th scope="col">Inicio</th>
             <th scope="col">Finalización</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
             <td>{{ curso.curso_postulado.nro_comision }}</td>
             <td>{{ curso.curso_postulado.inicio }}</td>
             <td>{{ curso.curso_postulado.final }}</td>
+            <td><a href="{% url 'detalle-comision' curso.curso_postulado.nro_comision %}">+ Ver detalle</a></td>
         </tr>   
         {% empty %}
         <div class="text-center">

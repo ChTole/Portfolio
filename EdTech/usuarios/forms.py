@@ -21,6 +21,6 @@ class UsuarioEditForm(UserCreationForm):
     
     class Meta:
         model = Usuario
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'email', 'avatar', 'password1', 'password2']
         # Quita mensajes de ayuda
         help_texts = {k:"" for k in fields}

@@ -32,3 +32,14 @@ def cursos_disponibles(request):
         "no_disponibles": no_disponibles,
     }
     return render(request, "cursos/cursos_disp.html", ctx)
+
+@login_required
+def detalle_comision(request, nro_comision):
+    curso = Comision.objects.get(nro_comision = nro_comision)
+    estudiantes = CursoInscripto.objects.filter(curso_inscripto = curso.id)
+    print(estudiantes)
+    ctx = {
+        "curso": curso,
+        "estudiantes": estudiantes,
+    }
+    return render(request, "cursos/detalle_comision.html", ctx)

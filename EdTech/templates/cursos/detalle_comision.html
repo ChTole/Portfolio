@@ -1,0 +1,45 @@
+{% extends 'sitio1/inicio.html' %}
+
+{% block title %}
+    EdTech - Docentes
+{% endblock %}
+    
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <h1>{{ curso.tema_curso.tema }}</h1>
+            <div class="h-25">
+                <img style="height: 100px" src="{{ curso.tema_curso.imagen.url }}" alt="">
+            </div>
+        </div>
+        <ul>
+            <li>Comisión: {{ curso.comision }}</li>
+            <li>Inicia: {{ curso.inicio }}</li>
+            <li>Finaliza: {{ curso.final }}</li>
+            <li>Vacantes: {{ curso.vacantes }}</li>
+        </ul>
+        <h4>Estudiantes inscriptos</h4>
+    </div>   
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Estudiante</th>
+                <th scope="col">e-m@il</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudiante in estudiantes %}
+            <tr>
+                <td>{{ estudiante.estudiante.first_name }} {{ estudiante.estudiante.last_name }}</td>
+                <td>{{ estudiante.estudiante.email }}</td>
+                <td><a href="#">Enviar mensaje</a></td>
+            </tr>   
+            {% empty %}
+            <h5>¡Aún no hay estudiantes inscriptos!</h5>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
