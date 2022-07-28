@@ -24,6 +24,7 @@ EdTech - Posteo y comentarios
                 {% endif %}
             </div>
             <br>
+            <h5>Tu comentario:</h5>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div>
@@ -34,7 +35,7 @@ EdTech - Posteo y comentarios
                 </div>
                 <button>Comentar</button>
             </form>
-            
+            <br>
             <h5>Comentarios</h5>
 
             {% for comment in posteo.comentarios.all %}

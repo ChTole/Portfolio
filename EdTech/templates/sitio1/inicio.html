@@ -27,15 +27,19 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Acerca de</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="https://www.linkedin.com/in/christianarieltoledo/">Christian</a></li>
-                                <li><a class="dropdown-item" href="https://github.com/ChTole/Portfolio">Código fuente</a></li>
+                                <li><a class="dropdown-item" href="https://www.linkedin.com/in/christianarieltoledo/" target="_black">Christian</a></li>
+                                <li><a class="dropdown-item" href="https://github.com/ChTole/Portfolio" target="_black">Código fuente</a></li>
                             </ul>
                         </li>
                     </ul>
                     
                     {% if user.is_authenticated %}
                     <li class="nav item"> Hola, {{ user.first_name }}</li>
-                    <img height="40px" src="{{ request.user.avatar.url }}">
+                    {% if request.user.avatar %}    
+                        <img height="40px" src="{{ request.user.avatar.url }}">
+                    {% else %}
+                        <img height="40px" src='../../media/avatares/avatar_null.png' alt="">
+                    {% endif %}
                         {% if user.tipo_usuario == 1 %}
                             <li class="nav item"><a class="btn btn-primary ms-1" href="{% url 'estudiantes_inicio' %}">Cursos inscriptos</a></li>
                         {% elif user.tipo_usuario == 2 %}
