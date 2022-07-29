@@ -4,6 +4,9 @@ from django.db.models import Q
 from cursos.models import Tema
 from estudiantes.models import CursoInscripto
 
+def index(request):
+    return render(request, "sitio1/index.html")
+
 def inicio(request):
     if request.user.is_authenticated:
         inscriptos = CursoInscripto.objects.filter(estudiante = request.user)

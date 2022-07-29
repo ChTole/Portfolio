@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 
+# Claves secretas
+from . import project_keys
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c!_o1tkjb!5jsd7)gpy7rf-hf@&e-wilo0uh*i(&-)xcbg6f#n'
+SECRET_KEY = project_keys.key1
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ChTole.pythonanywhere.com']
 
 
 # Application definition
@@ -89,11 +92,11 @@ WSGI_APPLICATION = 'EdTech.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'edtech',
-        'USER': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'init_command': "SET sql_mode='STRICT_ALL_TABLES'",
+        'HOST': 'ChTole.mysql.pythonanywhere-services.com',
+        'USER': 'ChTole',
+        'PASSWORD': project_keys.key2,
+        'NAME': 'ChTole$default',
+        'CHARSET': 'utf8',
     }
 }
 
@@ -136,7 +139,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-STATIC_ROOT = 'static/admin'
+STATIC_ROOT = '/home/ChTole/Portfolio/static/admin'
 
 
 # Default primary key field type
@@ -151,3 +154,9 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'usuarios.Usuario'
 
 LOGIN_URL = '/usuarios/login'
+
+# Seteo desarrollo
+try:
+    from .settings_dev import *
+except ModuleNotFoundError:
+    pass
