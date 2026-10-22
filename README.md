@@ -28,17 +28,19 @@ Luego abrir `http://localhost:4200/` en el navegador.
 ## Estructura
 
 ```
+public/
+├── cv/                  # CV descargable (castellano e inglés)
+└── img/                 # Ilustraciones e imagen de vista previa
 src/
 ├── app/
-│   ├── core/          # Servicios globales (por ejemplo, idioma)
-│   ├── shared/        # Componentes reutilizables: navbar, footer, tarjeta de proyecto
+│   ├── core/            # Servicios (ProjectService)
+│   ├── shared/          # Componentes reutilizables: navbar, footer, tarjeta de proyecto, redes
 │   ├── pages/
 │   │   ├── home/            # Página principal
 │   │   └── project-detail/  # Caso de estudio de cada proyecto
-│   └── data/          # Contenido de los proyectos
-└── assets/
-    ├── cv/            # CV descargable (castellano e inglés)
-    └── img/           # Imágenes y capturas
+│   └── data/            # Contenido del sitio: perfil, habilidades y proyectos
+└── environments/        # Configuración de desarrollo y producción
+netlify.toml             # Build, versión de Node y redirecciones
 ```
 
 ## Hoja de ruta
