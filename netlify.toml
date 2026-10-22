@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist/portfolio/browser"   # verificar contra outputPath en angular.json
+ 
+[build.environment]
+  NODE_VERSION = "24"
+ 
+# Angular maneja las rutas en el navegador: cualquier URL debe servir index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

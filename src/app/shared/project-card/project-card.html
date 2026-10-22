@@ -1,0 +1,19 @@
+<div class="card h-100">
+  @if (project().image; as image) {
+    <img [src]="image" class="card-img-top" [alt]="project().title">
+  }
+  <div class="card-body">
+    <h3 class="h5 card-title">{{ project().title }}</h3>
+    <p class="card-text">{{ project().summary }}</p>
+    @for (tag of project().tags; track tag) {
+      <span class="badge text-bg-secondary me-1">{{ tag }}</span>
+    }
+  </div>
+  @if (project().caseStudy) {
+    <div class="card-footer bg-transparent border-0 pb-3">
+      <a class="btn btn-outline-primary btn-sm" [routerLink]="['/proyectos', project().slug]">
+        Ver caso de estudio
+      </a>
+    </div>
+  }
+</div>

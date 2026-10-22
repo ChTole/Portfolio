@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md sticky-top bg-body border-bottom">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" routerLink="/" fragment="inicio" (click)="menuOpen.set(false)">
+      {{ profile.name }}
+    </a>
+
+    <button class="navbar-toggler" type="button" aria-controls="menu-principal" [attr.aria-expanded]="menuOpen()"
+      aria-label="Abrir menú" (click)="toggleMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu-principal" [class.show]="menuOpen()">
+      <ul class="navbar-nav ms-auto">
+        @for (link of links; track link.fragment) {
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" [fragment]="link.fragment" (click)="menuOpen.set(false)">
+            {{ link.label }}
+          </a>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

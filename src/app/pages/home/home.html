@@ -1,0 +1,95 @@
+<!-- Presentación -->
+<section id="inicio" class="py-5 border-bottom">
+  <div class="container py-md-5">
+    <h1 class="display-4 fw-bold mb-2">{{ profile.name }}</h1>
+    <p class="fs-3 text-primary mb-4">{{ profile.role }}</p>
+    <p class="lead mb-4" style="max-width: 40rem">{{ profile.tagline }}</p>
+
+    <div class="d-flex flex-wrap gap-3 mb-4">
+      <a class="btn btn-primary btn-lg" routerLink="/" fragment="proyectos">Ver proyectos</a>
+
+      <div class="dropdown">
+        <button class="btn btn-outline-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-download me-2" aria-hidden="true"></i>Descargar CV
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" [href]="profile.cv.es" download>En castellano</a></li>
+          <li><a class="dropdown-item" [href]="profile.cv.en" download>In English</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <app-social-links size="lg" />
+  </div>
+</section>
+
+<!-- Proyectos -->
+<section id="proyectos" class="py-5">
+  <div class="container">
+    <h2 class="mb-4">Proyectos destacados</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      @for (project of projects; track project.slug) {
+        <div class="col">
+          <app-project-card [project]="project" />
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Habilidades -->
+<section id="habilidades" class="py-5 bg-body-tertiary">
+  <div class="container">
+    <h2 class="mb-4">Habilidades técnicas</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      @for (group of skillGroups; track group.title) {
+        <div class="col">
+          <h3 class="h6 fw-semibold mb-3">{{ group.title }}</h3>
+          <ul class="list-unstyled d-flex flex-wrap gap-2 mb-0">
+            @for (skill of group.skills; track skill.name) {
+              <li class="border rounded px-2 py-1 bg-body d-flex align-items-center gap-2">
+                @if (skill.icon) {
+                  <i [class]="skill.icon + ' colored fs-5'" aria-hidden="true"></i>
+                }
+                <span>{{ skill.name }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Sobre mí -->
+<section id="sobre-mi" class="py-5">
+  <div class="container" style="max-width: 48rem">
+    <h2 class="mb-4">Sobre mí</h2>
+    <p>
+      Soy Desarrollador Full Stack y trabajo en proyectos que van desde el análisis del requerimiento
+      hasta su puesta en producción. Llevé adelante el desarrollo de una plataforma pública de
+      orientación para el empleo que hoy supera las 40.000 personas registradas, y en un laboratorio
+      de Realidad Extendida desarrollo una aplicación de telemetría y análisis de datos para simulaciones
+      en Unity para Meta Quest.
+    </p>
+    <p>
+      Antes de dedicarme al desarrollo trabajé más de diez años en el sector salud y fui instructor de
+      Python. Esa trayectoria me enseñó a entender las necesidades de quienes usan lo que desarrollo
+      y a explicar lo técnico con claridad.
+    </p>
+    <p class="mb-0">
+      Actualmente curso la Tecnicatura Superior en Desarrollo de Software y me estoy formando en
+      desarrollo de videojuegos con Unity, con interés en la gamificación y los entornos inmersivos.
+    </p>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="py-5 bg-body-tertiary">
+  <div class="container" style="max-width: 48rem">
+    <h2 class="mb-3">Contacto</h2>
+    <p class="mb-4">¿Tenés un proyecto o una propuesta? Escribime.</p>
+    <a class="fs-4 fw-semibold d-inline-block mb-4" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+    <app-social-links size="lg" />
+  </div>
+</section>

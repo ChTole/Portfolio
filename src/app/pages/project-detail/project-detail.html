@@ -1,0 +1,77 @@
+<div class="container py-5" style="max-width: 52rem">
+  <a class="d-inline-block mb-4" routerLink="/" fragment="proyectos">
+    <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver a proyectos
+  </a>
+
+  @if (project(); as p) {
+    <h1 class="mb-3">{{ p.title }}</h1>
+    <p class="lead">{{ p.summary }}</p>
+    <div class="mb-4">
+      @for (tag of p.tags; track tag) {
+        <span class="badge text-bg-secondary me-1">{{ tag }}</span>
+      }
+    </div>
+
+    @if (p.image; as image) {
+      <img [src]="image" class="project-illustration" [alt]="p.title">
+    }
+
+    @if (p.caseStudy; as cs) {
+      <h2 class="h4">Contexto</h2>
+      <p class="mb-4">{{ cs.context }}</p>
+
+      <h2 class="h4">Mi rol</h2>
+      <p class="mb-4">{{ cs.role }}</p>
+
+      <h2 class="h4">Qué se construyó</h2>
+      <ul class="mb-4">
+        @for (item of cs.solution; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+
+      <h2 class="h4">Resultados</h2>
+      <ul class="mb-4">
+        @for (item of cs.results; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+
+      @if (cs.nextSteps?.length) {
+        <h2 class="h4">Próximos pasos</h2>
+        <ul class="mb-4">
+          @for (item of cs.nextSteps ?? []; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      }
+
+      @if (cs.gallery?.length) {
+        <h2 class="h4 mb-3">Capturas</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
+          @for (img of cs.gallery ?? []; track img.src) {
+            <div class="col">
+              <img [src]="img.src" class="img-fluid rounded border" [alt]="img.alt" loading="lazy">
+            </div>
+          }
+        </div>
+      }
+
+      @if (cs.links?.length) {
+        <h2 class="h4">Enlaces</h2>
+        <ul class="list-unstyled">
+          @for (link of cs.links ?? []; track link.url) {
+            <li class="mb-2">
+              <a [href]="link.url" target="_blank" rel="noopener">
+                <i class="bi bi-box-arrow-up-right me-2" aria-hidden="true"></i>{{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      }
+    }
+  } @else {
+    <h1 class="h3">No encontramos ese proyecto</h1>
+    <p>Puede que el enlace esté mal escrito. Volvé a la lista para ver todos los proyectos.</p>
+  }
+</div>

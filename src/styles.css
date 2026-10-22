@@ -1,0 +1,53 @@
+:root {
+  --bs-primary: #2b4a57;
+  --bs-primary-rgb: 43, 74, 87;
+  --bs-link-color: #2b4a57;
+  --bs-link-color-rgb: 43, 74, 87;
+  --bs-link-hover-color: #1b2f37;
+  --bs-link-hover-color-rgb: 27, 47, 55;
+}
+
+.btn-primary {
+  --bs-btn-bg: #2b4a57;
+  --bs-btn-border-color: #2b4a57;
+  --bs-btn-hover-bg: #223b45;
+  --bs-btn-hover-border-color: #223b45;
+  --bs-btn-active-bg: #1b2f37;
+  --bs-btn-active-border-color: #1b2f37;
+  --bs-btn-focus-shadow-rgb: 43, 74, 87;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #2b4a57;
+  --bs-btn-border-color: #2b4a57;
+  --bs-btn-hover-bg: #2b4a57;
+  --bs-btn-hover-border-color: #2b4a57;
+  --bs-btn-active-bg: #1b2f37;
+  --bs-btn-active-border-color: #1b2f37;
+  --bs-btn-focus-shadow-rgb: 43, 74, 87;
+}
+
+#inicio {
+  background-color: #e9fffb;
+}
+
+.card-img-top {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  padding: 1.5rem;
+  background-color: var(--bs-tertiary-bg);
+}
+
+/* Devicon define Angular en blanco: invisible sobre fondo claro */
+.devicon-angular-plain.colored {
+  color: #dd0031;
+}
+
+.project-illustration {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  max-height: 16rem;
+  object-fit: contain;
+  margin: 0 auto 3rem;
+}

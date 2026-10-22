@@ -1,0 +1,17 @@
+<ul class="list-inline mb-0" [class.fs-4]="size() === 'lg'">
+  <li class="list-inline-item me-3">
+  <a [href]="'mailto:' + profile.email" class="link-body-emphasis" aria-label="Correo">
+      <i class="bi bi-envelope" aria-hidden="true"></i>
+  </a>
+  </li>
+  <li class="list-inline-item me-3">
+  <a [href]="profile.linkedin" class="link-body-emphasis" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <i class="bi bi-linkedin" aria-hidden="true"></i>
+  </a>
+  </li>
+  <li class="list-inline-item">
+  <a [href]="profile.github" class="link-body-emphasis" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="bi bi-github" aria-hidden="true"></i>
+  </a>
+  </li>
+</ul>
