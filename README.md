@@ -47,5 +47,7 @@ netlify.toml             # Build, versión de Node y redirecciones
 
 - [x] **MVP 1:** Página principal, CV descargable y proyectos destacados.
 - [x] **MVP 2:** Casos de estudio de los proyectos web.
-- [ ] **MVP 3:** Simulador de ensamblado de muebles en Unity (WebGL), embebido en el portfolio.
-- [ ] **MVP 4:** Telemetría del simulador: backend en Django y tablero de métricas.
+- [x] **MVP 3:** Bitácora: package con el flujo completo y el backend simulado, y escenas plantilla.
+- [ ] **MVP 4:** Taller de Ensamblado: la simulación en navegador, usando Bitácora.
+- [ ] **MVP 5:** API y tablero: el backend real y las métricas de aprendizaje.
+- [ ] **MVP 6:** Meta Quest: compilación para el visor y vinculación de dispositivos.
