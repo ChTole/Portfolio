@@ -1,0 +1,33 @@
+# Christian Ariel Toledo
+
+> Desarrollador Full Stack de Buenos Aires, Argentina. Desarrolla de punta a punta aplicaciones web, plataformas de e-learning y herramientas de telemetría para simulaciones de Realidad Extendida.
+
+Trabaja con Python (Django, Flask, Celery), TypeScript (Angular) y C# (Unity). Fue instructor de Python Full Stack durante dos años, con comisiones de hasta 80 estudiantes. Certificado como MongoDB Certified Associate Developer. Actualmente cursa la Tecnicatura Superior en Desarrollo de Software y se forma en desarrollo de videojuegos con Unity.
+
+## Proyectos
+
+- [Plataforma Construí tu Futuro](https://christiantoledo-dev.netlify.app/proyectos/construi-tu-futuro): plataforma pública de orientación para el empleo con más de 40.000 personas registradas. Test de habilidades integrado con Moodle, agenda de encuentros con inscripción en línea, tableros estadísticos y back office con segmentación de usuarios. Django, Angular, Celery y Redis.
+- [Bitácora](https://github.com/ChTole/bitacora): package de Unity de código abierto para registrar sesiones y eventos de telemetría en simulaciones educativas. Alias anónimos, envío por lotes con reintentos sin duplicados, contrato de API documentado y servidor de prueba en Flask.
+- [Telemetría y Análisis](https://christiantoledo-dev.netlify.app/proyectos/telemetria-y-analisis): plataforma que registra y analiza la telemetría de simulaciones de realidad virtual en Unity para Meta Quest. Django, Angular, MariaDB y Docker. Publicación pendiente.
+- [Asistente virtual](https://christiantoledo-dev.netlify.app/proyectos/asistente-virtual): chatbot que responde consultas de docentes sobre el uso de Moodle, con clasificación de intenciones (NLTK y TensorFlow) y back office. Publicación pendiente.
+
+## Habilidades
+
+- Lenguajes: Python, TypeScript, JavaScript, C#, SQL, HTML, CSS
+- Frameworks y librerías: Django, Django REST Framework, Flask, Celery, Angular, Bootstrap, Tailwind CSS, Unity
+- Bases de datos: MySQL, MariaDB, MongoDB, Redis
+- DevOps y nube: Docker, Git, GitHub, GitLab, servidores Linux, AWS (fundamentos)
+- Datos e IA: Pandas, scikit-learn, TensorFlow, NLTK, Tableau
+- E-learning y XR: Moodle, SCORM, Meta Quest, telemetría de simulaciones
+
+## Contacto
+
+- [Portfolio](https://christiantoledo-dev.netlify.app)
+- [LinkedIn](https://www.linkedin.com/in/christianarieltoledo/)
+- [GitHub](https://github.com/ChTole)
+- Correo: ch.ariel.tole@gmail.com
+
+## Optional
+
+- [CV en castellano (PDF)](https://christiantoledo-dev.netlify.app/cv/ChAToledo2026_ES.pdf)
+- [CV en inglés (PDF)](https://christiantoledo-dev.netlify.app/cv/ChAToledo2026_EN.pdf)
