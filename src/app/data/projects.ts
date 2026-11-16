@@ -27,6 +27,41 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+    slug: 'taller-de-ensamblado',
+    title: 'Taller de Ensamblado',
+    summary:
+      'Simulación de carpintería para el navegador: armar muebles uniendo sus piezas con encastres, con telemetría de cada intento.',
+    category: 'xr',
+    tags: ['Unity', 'C#', 'ProBuilder', 'WebGL', 'Bitácora'],
+    image: 'img/building-blocks.svg',
+    caseStudy: {
+      context:
+        'Aprender un procedimiento manual, como ensamblar un mueble, requiere práctica, y registrar cómo se resuelve cada intento permite analizar el aprendizaje. El objetivo fue sentar las bases técnicas de una simulación educativa de carpintería. Es un modelo de referencia, desarrollado sin supervisión de especialistas: las piezas, medidas y procedimientos son ilustrativos.',
+      role:
+        'Diseño, modelado y desarrollo de la simulación en Unity, e integración de Bitácora para la telemetría. Proyecto personal de código abierto.',
+      solution: [
+        'Tres muebles de dificultad creciente (mesa ratona, taburete y silla) que se arman uniendo sus piezas con encastres de caja y espiga.',
+        'Piezas modeladas con ProBuilder, dentro de Unity.',
+        'Ayuda visual: mientras se mantiene presionado un botón, se muestra el mueble armado.',
+        'Controles con mouse o pantalla táctil, con detección automática del dispositivo.',
+        'Resumen final con el resultado del armado y las uniones incorrectas.',
+        'Telemetría con Bitácora: cada unión se registra indicando si es la esperada.',
+      ],
+      results: [
+        'Versión 1 publicada y jugable en el navegador, en computadora o celular.',
+        'Primera integración de Bitácora en una simulación real.',
+      ],
+      nextSteps: [
+        'Versión 2: uniones atornilladas, con atornillador y perforadora.',
+        'Conexión con un servidor real y tablero de métricas de aprendizaje.',
+      ],
+      links: [
+        { label: 'Probar la simulación (21 MB)', url: 'https://taller-de-ensamblado.netlify.app/' },
+        { label: 'Repositorio en GitHub', url: 'https://github.com/ChTole/taller-ensamblado' },
+      ],
+    },
+  },
+  {
     slug: 'bitacora',
     title: 'Bitácora',
     summary:
@@ -50,10 +85,10 @@ export const PROJECTS: Project[] = [
       ],
       results: [
         'Versión 0.1.0 publicada, probada en Ubuntu y Windows con instalación desde un proyecto vacío.',
+        'Integrado en el Taller de Ensamblado, una simulación de carpintería publicada en el navegador.',
         'Diseñado para escritorio, navegador (WebGL) y Android: usa solo herramientas de Unity disponibles en las tres plataformas.',
       ],
       nextSteps: [
-        'Integración en el Taller de Ensamblado, una simulación de carpintería en desarrollo.',
         'Almacenamiento local de eventos cuando no hay conexión.',
         'Vinculación de dispositivos con un código, sin configuración manual.',
       ],
