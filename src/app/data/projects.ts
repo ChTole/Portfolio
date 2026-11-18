@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
     summary:
       'Simulación de carpintería para el navegador: armar muebles uniendo sus piezas con encastres, con telemetría de cada intento.',
     category: 'xr',
-    tags: ['Unity', 'C#', 'ProBuilder', 'WebGL', 'Bitácora'],
+    tags: ['Unity', 'C#', 'WebGL', 'Bitácora'],
     image: 'img/building-blocks.svg',
     caseStudy: {
       context:
@@ -41,7 +41,7 @@ export const PROJECTS: Project[] = [
         'Diseño, modelado y desarrollo de la simulación en Unity, e integración de Bitácora para la telemetría. Proyecto personal de código abierto.',
       solution: [
         'Tres muebles de dificultad creciente (mesa ratona, taburete y silla) que se arman uniendo sus piezas con encastres de caja y espiga.',
-        'Piezas modeladas con ProBuilder, dentro de Unity.',
+        'Piezas modeladas en el editor de Unity a partir de sus formas básicas, sin herramientas de modelado externas.',
         'Ayuda visual: mientras se mantiene presionado un botón, se muestra el mueble armado.',
         'Controles con mouse o pantalla táctil, con detección automática del dispositivo.',
         'Resumen final con el resultado del armado y las uniones incorrectas.',
