@@ -102,7 +102,7 @@ export const PROJECTS: Project[] = [
     slug: 'telemetria-y-analisis',
     title: 'Telemetría y Análisis',
     summary:
-      'Plataforma que registra y analiza la telemetría de simulaciones de realidad virtual en Unity para Meta Quest. Publicación pendiente.',
+      'Plataforma que registra y analiza la telemetría de simulaciones de realidad virtual en Unity para Meta Quest.',
     category: 'xr',
     tags: ['Django', 'Angular', 'Unity', 'C#', 'MariaDB', 'Docker'],
     image: 'img/instant-analysis.svg',
@@ -124,17 +124,13 @@ export const PROJECTS: Project[] = [
         'Versión inicial funcional, con API, registro de sesiones y eventos, y tablero de analíticas.',
         'Una simulación nueva se incorpora respetando el contrato de la API, sin cambios en el backend.',
       ],
-      nextSteps: [
-        'Reproducción de sesiones (replay) para revisar cada experiencia paso a paso.',
-        'Indicadores resumidos y nuevas métricas en el tablero y la analítica.',
-      ],
     },
   },
   {
     slug: 'asistente-virtual',
     title: 'Asistente virtual',
     summary:
-      'Chatbot que responde consultas de docentes sobre el uso de Moodle, con un back office para el equipo. Publicación pendiente.',
+      'Chatbot que responde consultas de docentes sobre el uso de Moodle, con un back office para el equipo.',
     category: 'web',
     tags: ['Python', 'NLTK', 'TensorFlow', 'Moodle'],
     image: 'img/chat-bot.svg',
@@ -151,12 +147,8 @@ export const PROJECTS: Project[] = [
         'Back office con módulos de soporte (solicitudes con el rol y los datos de cada persona, e incorporación masiva de usuarios de Moodle por CSV), registro de interacciones, comentarios y gestión de usuarios del equipo.',
       ],
       results: [
-        'Las consultas frecuentes se resuelven al instante, y las solicitudes de soporte llegan al equipo ordenadas y con el contexto de cada persona.',
-        'El registro de interacciones permite evaluar el desempeño del asistente y mejorarlo con datos reales de uso.',
-      ],
-      nextSteps: [
-        'Tableros con visualizaciones interactivas y métricas de uso.',
-        'Informes exportables.',
+        'Versión funcional completa, con chatbot, back office y registro de interacciones.',
+        'Diseñado para que las consultas frecuentes se resuelvan al instante y las solicitudes de soporte lleguen al equipo ordenadas y con el contexto de cada persona.',
       ],
     },
   },
