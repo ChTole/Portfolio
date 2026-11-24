@@ -1,10 +1,22 @@
 :root {
+  --bs-body-font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --bs-primary: #2b4a57;
   --bs-primary-rgb: 43, 74, 87;
   --bs-link-color: #2b4a57;
   --bs-link-color-rgb: 43, 74, 87;
   --bs-link-hover-color: #1b2f37;
   --bs-link-hover-color-rgb: 27, 47, 55;
+}
+
+/* Lato se carga en 400 y 700: los pesos intermedios de Bootstrap van a 700 */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.fw-semibold, .fw-medium {
+  font-weight: 700 !important;
+}
+
+.lead {
+  font-weight: 400;
 }
 
 .btn-primary {

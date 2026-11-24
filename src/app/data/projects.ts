@@ -38,7 +38,7 @@ export const PROJECTS: Project[] = [
       context:
         'Aprender un procedimiento manual, como ensamblar un mueble, requiere práctica, y registrar cómo se resuelve cada intento permite analizar el aprendizaje. El objetivo fue sentar las bases técnicas de una simulación educativa de carpintería. Es un modelo de referencia, desarrollado sin supervisión de especialistas: las piezas, medidas y procedimientos son ilustrativos.',
       role:
-        'Diseño, modelado y desarrollo de la simulación en Unity, e integración de Bitácora para la telemetría. Proyecto personal de código abierto.',
+        'Diseño, modelado y desarrollo de la simulación en Unity, e integración de Bitácora para la telemetría. Proyecto personal de código abierto, desarrollado con un flujo AI-first.',
       solution: [
         'Tres muebles de dificultad creciente (mesa ratona, taburete y silla) que se arman uniendo sus piezas con encastres de caja y espiga.',
         'Piezas modeladas en el editor de Unity a partir de sus formas básicas, sin herramientas de modelado externas.',
@@ -50,13 +50,14 @@ export const PROJECTS: Project[] = [
       results: [
         'Versión 1 publicada y jugable en el navegador, en computadora o celular.',
         'Primera integración de Bitácora en una simulación real.',
+        'Cada sesión se registra en un servidor en producción y sus métricas se pueden consultar en un tablero público.',
       ],
       nextSteps: [
         'Versión 2: uniones atornilladas, con atornillador y perforadora.',
-        'Conexión con un servidor real y tablero de métricas de aprendizaje.',
       ],
       links: [
         { label: 'Probar la simulación (21 MB)', url: 'https://taller-de-ensamblado.netlify.app/' },
+        { label: 'Ver las métricas en el tablero', url: 'https://bitacora-tablero.netlify.app/taller-ensamblado' },
         { label: 'Repositorio en GitHub', url: 'https://github.com/ChTole/taller-ensamblado' },
       ],
     },
@@ -73,7 +74,7 @@ export const PROJECTS: Project[] = [
       context:
         'Cada simulación educativa necesita registrar qué hace la persona que participa para poder analizar su aprendizaje. Sin una herramienta común, cada proyecto termina reimplementando la conexión con el servidor, el manejo de sesiones y los reintentos ante fallas de red.',
       role:
-        'Diseño, desarrollo y documentación del package, del contrato con el servidor y de un servidor de prueba. Proyecto personal de código abierto.',
+        'Diseño, desarrollo y documentación del package, del contrato con el servidor y de un servidor de prueba. Proyecto personal de código abierto, desarrollado con un flujo AI-first.',
       solution: [
         'Package instalable desde el Package Manager de Unity, con una plantilla de ejemplo que funciona sin servidor.',
         'Participación anónima con un alias asignado por el servidor (por ejemplo, "Carpincho Turquesa"), o identificada con un único dato configurable.',
@@ -84,8 +85,8 @@ export const PROJECTS: Project[] = [
         'Servidor de prueba en Flask que implementa el contrato y permite simular fallas y demoras.',
       ],
       results: [
-        'Versión 0.1.0 publicada, probada en Ubuntu y Windows con instalación desde un proyecto vacío.',
-        'Integrado en el Taller de Ensamblado, una simulación de carpintería publicada en el navegador.',
+        'Versión 0.2.0 publicada, con la versión 1.1 del contrato. La instalación se probó en Ubuntu y Windows desde un proyecto vacío.',
+        'Integrado en el Taller de Ensamblado y conectado a un servidor en producción.',
         'Diseñado para escritorio, navegador (WebGL) y Android: usa solo herramientas de Unity disponibles en las tres plataformas.',
       ],
       nextSteps: [
@@ -94,7 +95,41 @@ export const PROJECTS: Project[] = [
       ],
       links: [
         { label: 'Repositorio en GitHub', url: 'https://github.com/ChTole/bitacora' },
-        { label: 'Versión 0.1.0', url: 'https://github.com/ChTole/bitacora/releases/tag/v0.1.0' },
+        { label: 'Versión 0.2.0', url: 'https://github.com/ChTole/bitacora/releases/tag/v0.2.0' },
+      ],
+    },
+  },
+  {
+    slug: 'bitacora-api-y-tablero',
+    title: 'Bitácora API y Tablero',
+    summary:
+      'Servidor de telemetría y tablero público de métricas de aprendizaje para las simulaciones que usan Bitácora.',
+    category: 'web',
+    tags: ['Django', 'DRF', 'MongoDB', 'Angular', 'ECharts'],
+    image: 'img/data.svg',
+    caseStudy: {
+      context:
+        'Bitácora registraba lo que ocurre en cada simulación, pero faltaba dónde guardarlo y cómo convertirlo en información útil. El objetivo fue un servidor que implementara su contrato y un tablero abierto que mostrara cómo se resuelve cada simulación, sin datos personales de quienes participan.',
+      role:
+        'Diseño, desarrollo y despliegue del servidor y del tablero, con las decisiones de arquitectura documentadas. Proyecto personal de código abierto, desarrollado con un flujo AI-first.',
+      solution: [
+        'Servidor en Django y Django REST Framework que implementa el contrato de Bitácora, con claves de API guardadas como hash y límites de solicitudes.',
+        'Sesiones en MongoDB: cada una es un documento con sus eventos incrustados, que se registran con una actualización atómica que descarta duplicados.',
+        'Métricas calculadas con pipelines de agregación y expuestas en una API pública de solo lectura.',
+        'Tablero en Angular con ECharts: evolución, comparación por mueble, dificultades frecuentes y búsqueda de sesiones por alias, con filtros por mueble, dispositivo y fechas.',
+        'Gráficos con una paleta apta para daltonismo.',
+        'Registro de decisiones de arquitectura (ADR) y tests automatizados.',
+        'Despliegue sin costo en Render, MongoDB Atlas y Netlify.',
+      ],
+      results: [
+        'Versión 0.1.0 en producción, recibiendo las sesiones del Taller de Ensamblado.',
+        'Quien juega puede encontrar sus resultados con el alias que le asignó la simulación.',
+        'Tablero con 100 en rendimiento, accesibilidad, buenas prácticas y SEO en PageSpeed (escritorio).',
+      ],
+      links: [
+        { label: 'Ver el tablero', url: 'https://bitacora-tablero.netlify.app/' },
+        { label: 'Repositorio de la API', url: 'https://github.com/ChTole/bitacora-api' },
+        { label: 'Repositorio del tablero', url: 'https://github.com/ChTole/bitacora-tablero' },
       ],
     },
   },
